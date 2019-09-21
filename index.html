@@ -5,6 +5,9 @@
     <style>
       body {
         font-family: Arial, Helvetica, sans-serif;
+        background-color: #202020;
+        color: #f64279;
+        display: flex;
       }
       .name1 {
         color: MediumVioletRed;
@@ -12,8 +15,11 @@
       .name2 {
         color: LightSeaGreen;
       }
+      #kara-walker {
+        background-color : #303030;
+      }
     </style>
-    <!-- "script" changes what your web page DOES -->
+    <!-- "script" changes what yousr web page DOES -->
     <script>
       let greetings = [
         "Hello, world!",    // english
@@ -23,8 +29,14 @@
       ]
       let greetingsIdx = 0
       function changeMessage(greetingElement) {
-        greetingsIdx = greetingsIdx + 1
+        // greetingsIdx = greetingsIdx + 1
         greetingElement.innerText = greetings[greetingsIdx]
+        if (greetingsIdx < 3){
+          greetingsIdx = greetingsIdx + 1
+        }
+        else{
+          greetingsIdx = 0
+        }
       }
     </script>
   </head>
@@ -33,9 +45,43 @@
     <h1 id="greeting" onClick="changeMessage(this)">Hello, world!</h1>
     <p>
       by
-      <span class="name1">NAME_1</span>
+      <span class="name1">Prema</span>
       and
-      <span class="name2">NAME_2</span>
+      <span class="name2">Jibiana</span>
+      <canvas id="kara-walker" width="400px" height="400px"></canvas>
+      <script>
+      const canvas = document.getElementById('kara-walker')
+      const ctx = canvas.getContext('2d')
+      ctx.fillStyle = "#f64279"
+      ctx.fillRect(150,150,100,100,100,100)
+      ctx.strokeStyle = 'yellow'
+      ctx.beginPath()
+      // ctx.moveTo(75,50)
+      ctx.moveTo(75,50)
+      ctx.lineTo(100,75)
+      ctx.lineTo(100,25)
+      ctx.closePath()
+      ctx.stroke()
+      ctx.lineTo(100, 25)
+      ctx.closePath()
+      ctx.fill()
+
+      // Draw a smiley face
+      ctx.moveTo(75,75)
+      ctx.arc(75, 75, 35, 0, Math.PI, false);  // Mouth (clockwise)
+      ctx.moveTo(65, 65);
+      ctx.fillStyle = "#00ff00"
+      ctx.arc(60, 65, 5, 0, Math.PI * 2, true);  // Left eye
+      ctx.fill();
+      ctx.moveTo(95, 65);
+      ctx.arc(90, 65, 5, 0, Math.PI * 2, true);  // Right eye
+      
+      ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // Outer circle
+      ctx.moveTo(110, 75);
+      ctx.stroke();
+      
+
+      </script>
     </p>
   </body>
 </html>
